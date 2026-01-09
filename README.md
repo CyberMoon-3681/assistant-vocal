@@ -1,6 +1,6 @@
 # 🎵 Assistant Vocal Local "Spotify-Link"
 
-Assistant vocal fonctionnant à 100% en local (hors-ligne) capable d'écouter l'utilisateur, d'interpréter son intention via un LLM local (Ollama), de lancer Spotify et de répondre vocalement.
+Assistant vocal fonctionnant à 100% en local (hors-ligne) capable d'écouter l'utilisateur, d'interpréter son intention via un LLM local (Ollama), de lancer divers logiciel, de contrôler spotify et de répondre vocalement.
 
 ## 📋 Fonctionnalités
 
@@ -47,13 +47,9 @@ python -m vosk --model vosk-model-small-fr-0.22
 # Extrayez dans le dossier du projet
 ```
 
-### 5. Configurer le chemin Spotify
+### 5. Configurer le chemin des divers logiciels
 
-Éditez le fichier `assistant_spotify.py` et modifiez la variable `SPOTIFY_PATH` avec le chemin vers votre exécutable Spotify :
-
-```python
-SPOTIFY_PATH = r"C:\Users\VOTRE_NOM\AppData\Roaming\Spotify\Spotify.exe"
-```
+Faites un copié-coller des raccourcis des logiciel que vous souhaitez pouvoir ouvrir avec l'assistant dans le dossier shortcuts.
 
 Pour trouver le chemin de Spotify sur Windows :
 - Ouvrez le Gestionnaire des tâches (Ctrl+Shift+Échap)
@@ -74,17 +70,27 @@ Pour trouver le chemin de Spotify sur Windows :
    ```
 
 3. **Parler à l'assistant** :
-   - Dites "lance Spotify" ou "ouvre Spotify" pour lancer l'application
+   - Dites "lance (le nom du logiciel)" ou "ouvre (le nom du logiciel)" pour lancer l'application
    - L'assistant répondra vocalement
    - Appuyez sur `Ctrl+C` pour arrêter
 
 ## 🎯 Exemples de commandes vocales
 
-- "Lance Spotify"
-- "Ouvre Spotify"
-- "Démarre Spotify"
-- "Je veux écouter de la musique"
-- "Ouvre l'application Spotify"
+- "Lance (nom logiciel)"
+- "Ouvre (nom logiciel)"
+- "Démarre (nom logiciel)"
+- "Start (nom logiciel)"
+
+Pour spotify :
+- "monte le son"      permet de monter le son de spotify
+- "baisse le son"     permet de baisser le son de spotify
+- "pause"             permet de metre en pause votre musique
+- "reprend"           permet de relancer votre musique
+- "suivant"           permet de passer à la musique suivante
+- "précédent"         permet de revenir à la musique précédente
+- "mélange"           permet de changer le mode de lecture aléatoire
+- "répète"            permet de changer le mode de répétition
+- "met la playlist" puis attandez que l'assistant vous demmande quelle playlist puis "(nom playlist)"
 
 ## 🔧 Configuration avancée
 
@@ -143,6 +149,7 @@ pipwin install pyaudio
 
 ## 📝 Structure du code
 
+- `load_software_db()` : Charge la base de données des logiciels depuis le dossier shortcuts
 - `initialiser_voix()` : Configure pyttsx3
 - `ecouter_micro()` : Utilise Vosk pour la reconnaissance vocale
 - `analyser_intention(texte)` : Envoie une requête à Ollama
@@ -156,4 +163,5 @@ Ce projet est fourni tel quel, sans garantie.
 ## 🤝 Contribution
 
 Les contributions sont les bienvenues ! N'hésitez pas à ouvrir une issue ou une pull request.
+
 
